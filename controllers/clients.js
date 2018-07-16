@@ -19,7 +19,7 @@ exports.getClient = async function(req, res, next) {
   }
 };
 
-exports.addClient = async function(req, res) {
+exports.addClient = async function(req, res, next) {
   try {
     const { id, firstName, lastName, birthdate } = req.body;
 
@@ -30,6 +30,8 @@ exports.addClient = async function(req, res) {
       birthdate: moment(birthdate, DATE_FORMAT)
     };
 
+    console.log(req.body);
+
     const aClient = await Client.findOne({ id });
 
     if (aClient)
@@ -39,6 +41,7 @@ exports.addClient = async function(req, res) {
     await newClient.save();
     res.send(newClient);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
