@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'CondorLabs Providers Web API Endpoint' });
+  res.render('index', { title: 'Accenture Test API' });
 });
 
 module.exports = router;
